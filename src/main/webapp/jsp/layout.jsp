@@ -14,11 +14,11 @@
 			<c:if test="${slug == 'coordonnee'}">
 				<%@ include file="../WEB-INF/jspf/coordonnee.jspf"%>
 			</c:if>
-			<c:if test="${slug == 'coordonnee'}">
-				<%@ include file="../WEB-INF/jspf/coordonnee.jspf"%>
-			</c:if>
 			<c:if test="${slug == 'competition'}">
 				<%@ include file="../WEB-INF/jspf/competition.jspf"%>
+			</c:if>
+			<c:if test="${slug == 'profil'}">
+				<%@ include file="../WEB-INF/jspf/profil.jspf"%>
 			</c:if>
 		</div>
 		

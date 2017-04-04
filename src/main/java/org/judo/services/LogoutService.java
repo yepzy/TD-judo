@@ -16,6 +16,7 @@ public class LogoutService extends Services {
     public Map<ArgsPageLabel, Object> execute(HttpServletRequest req, HttpServletResponse resp, HttpSession session)
 	    throws ServletException, IOException {
 	System.out.println("Logout");
+	req.setAttribute("pageTitle", "Logout");
 	if (session == null)
 	    req.setAttribute("message", "Not connected");
 	else {

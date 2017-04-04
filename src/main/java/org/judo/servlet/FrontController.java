@@ -11,9 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.judo.services.CompetitionService;
+import org.judo.services.CoordonneeService;
 import org.judo.services.HomeService;
 import org.judo.services.LoginService;
 import org.judo.services.LogoutService;
+import org.judo.services.ProfilService;
 import org.judo.services.Services;
 import org.judo.utils.ArgsPageLabel;
 
@@ -22,7 +25,7 @@ public class FrontController extends HttpServlet {
     /**
      * 
      */
-    private static final long serialVersionUID = 26803170727591215L;
+    private static final long serialVersionUID = 1L;
 
     private Map<String, Class<? extends Services>> router;
 
@@ -40,8 +43,9 @@ public class FrontController extends HttpServlet {
 	router.put("home", HomeService.class);
 	router.put("login", LoginService.class);
 	router.put("logout", LogoutService.class);
-	 router.put("competition", CompetitionService.class);
-	 router.put("coordonnee", CoordonneeService.class);
+	router.put("profil", ProfilService.class);
+	router.put("competition", CompetitionService.class);
+	router.put("coordonnee", CoordonneeService.class);
     }
 
     /*
@@ -58,6 +62,8 @@ public class FrontController extends HttpServlet {
 
 	HttpSession session;
 	session = req.getSession(false);
+	if(session != null && session.getAttribute("login") != null)
+	    req.setAttribute("bandeau", "Administrateur");
 
 	String[] urlValArray = null;
 	String slug = null;
@@ -65,7 +71,7 @@ public class FrontController extends HttpServlet {
 	if (req.getRequestURL().toString().contains("/action")) {
 	    urlValArray = req.getRequestURL().toString().split("/action/");
 
-	    if (urlValArray != null && urlValArray.length > 1){
+	    if (urlValArray != null && urlValArray.length > 1) {
 		slug = urlValArray[1].contains("?") ? urlValArray[1].split("?")[0] : urlValArray[1];
 	    }
 

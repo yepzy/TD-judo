@@ -18,3 +18,8 @@
 		<h1>Application JUDO - ${pageTitle}</h1>
 		<br />
 	</header>
+	<div class="col-12 alert alert-info">
+		<c:if test="${!empty bandeau}">
+			${bandeau}
+		</c:if>
+	</div>

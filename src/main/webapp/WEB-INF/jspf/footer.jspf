@@ -3,7 +3,7 @@
    		Message -> ${message}  
 	</c:if>
 </div>
-<footer class="col-12">
+<footer class="col-12 footer">
 
 </footer>
 </body>
