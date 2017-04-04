@@ -1,0 +1,10 @@
+<div class="col-12 alert alert-warning">
+	<c:if test="${!empty message}">
+   		Message -> ${message}  
+	</c:if>
+</div>
+<footer class="col-12">
+
+</footer>
+</body>
+</html>

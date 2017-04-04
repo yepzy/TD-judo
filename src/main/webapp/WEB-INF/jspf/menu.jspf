@@ -1,0 +1,33 @@
+<nav class="alert">
+	<div class="list-group">
+		<div class="list-group-item-action">
+			<a href="/action" style="display: block">Accueil</a>
+		</div>
+		<div class="list-group-item-action">
+			<a href="/action/competition" style="display: block">Competitions</a>
+		</div>
+		<div class="list-group-item-action">
+			<a href="/action/coordonnee" style="display: block">Coordonnées</a>
+		</div>
+		<c:if test="${!empty sessionScope.login}">
+			<div class="list-group-item-action">
+				<a href="/action/profil" style="display: block">Profil</a>
+			</div>
+		</c:if>
+	</div>
+	<hr />
+	<div>
+		<c:if test="${!empty sessionScope.login}">
+			<a href="/action/logout"><button>Logout</button></a>
+		</c:if>
+		<c:if test="${empty login}">
+			<form method="get" action="/action/login">
+				<input type="text" class="form-control" name="login" id="login"
+					placeholder="login" /><br /> <input type="password"
+					class="form-control" name="password" id="password"
+					placeholder="password" /><br />
+				<button class="btn btn-primary">Sign In</button>
+			</form>
+		</c:if>
+	</div>
+</nav>
