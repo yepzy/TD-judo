@@ -1,1 +1,7 @@
-Profil
+<h2>Profil</h2>
+<div class="list-group">
+	<p class="list-group-item">Bob</p>
+	<p class="list-group-item">administrateur</p>
+	<p class="list-group-item">bob.crazy@judo.lan</p>
+	<p class="list-group-item">0657921325</p>
+</div>

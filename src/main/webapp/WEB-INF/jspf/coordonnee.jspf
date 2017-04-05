@@ -1,1 +1,7 @@
-COORDONNEE
+<h2>Coordonnées</h2>
+<div class="list-group">
+	<p class="list-group-item">JUDODO CENTER</p>
+	<p class="list-group-item">16 Rue du pont levis</p>
+	<p class="list-group-item">44300 Nantes</p>
+	<p class="list-group-item">0836178452</p>
+</div>

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.judo.bean.Competition;
+import org.judo.bean.Grade;
 import org.judo.utils.ArgsPageLabel;
 
 public class CompetitionService extends Services{
@@ -20,9 +21,8 @@ public class CompetitionService extends Services{
 	req.setAttribute("pageTitle", "Compétitions");
 	req.setAttribute("slug", "competition");
 
-	List<Competition> list =  Service.getCompetitions();
-	
-	req.setAttribute("list", list);
+	List<Competition> list_c =  Service.getCompetitions();
+	req.setAttribute("list", list_c);
 
 	rd = req.getRequestDispatcher("/jsp/layout.jsp");
 	return arrayReturnGen(rd, req, resp, session);

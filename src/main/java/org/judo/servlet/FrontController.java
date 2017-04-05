@@ -60,9 +60,9 @@ public class FrontController extends HttpServlet {
 
 	System.out.println(" --- FRONT CONTROLER --- ");
 
-	HttpSession session;
+	HttpSession session = null;
 	session = req.getSession(false);
-	if(session != null && session.getAttribute("login") != null)
+	if (session != null)
 	    req.setAttribute("bandeau", "Administrateur");
 
 	String[] urlValArray = null;

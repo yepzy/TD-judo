@@ -18,11 +18,12 @@ public class LogoutService extends Services {
 	System.out.println("Logout");
 	req.setAttribute("pageTitle", "Logout");
 	if (session == null)
-	    req.setAttribute("message", "Not connected");
+	    req.setAttribute("message", "You are not connected");
 	else {
 	    session.invalidate();
+	    req.setAttribute("message", "You have been disconnected");
 	}
-	resp.sendRedirect("/action");
+	resp.sendRedirect(req.getContextPath() + "/action");
 	return arrayReturnGen(rd, req, resp, session);
     }
 

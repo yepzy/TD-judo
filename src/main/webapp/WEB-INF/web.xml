@@ -1,9 +1,7 @@
-<web-app 
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xmlns="http://java.sun.com/xml/ns/javaee"
-    xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-    version="2.5" id="judo-cyril-bidaud">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0" id="judo-cyril-bidaud">
 	<servlet>
 		<servlet-name>Action</servlet-name>
 		<servlet-class>org.judo.servlet.FrontController</servlet-class>
@@ -12,4 +10,14 @@
 		<servlet-name>Action</servlet-name>
 		<url-pattern>/action/*</url-pattern>
 	</servlet-mapping>
+	<context-param>
+		<param-name>root_path</param-name>
+		<param-value>/</param-value>
+	</context-param>
+	<session-config>
+		<cookie-config>
+			<http-only>true</http-only>
+		</cookie-config>
+		<tracking-mode>COOKIE</tracking-mode>
+	</session-config>
 </web-app>
