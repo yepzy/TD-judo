@@ -1,4 +1,4 @@
-package org.judo.services;
+package org.judo.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,20 +9,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.judo.bean.Grade;
+import org.judo.bean.Competition;
+import org.judo.services.Service;
 import org.judo.utils.ArgsPageLabel;
 
-public class CoordonneeService extends Services{
+/**
+ * Display the competition page
+ * @author root
+ *
+ */
+public class CompetitionController extends BaseController {
 
     @Override
     public Map<ArgsPageLabel, Object> execute(HttpServletRequest req, HttpServletResponse resp, HttpSession session)
 	    throws ServletException, IOException {
-	req.setAttribute("pageTitle", "Coordonnées");
-	req.setAttribute("slug", "coordonnee");
-	List<Grade> list =  Service.getGrades();
-	
+	req.getServletContext().log("Competition page called");
 
-	
+	req.setAttribute("pageTitle", "Compétitions");
+	req.setAttribute("slug", "competition");
+
+	List<Competition> list = Service.getCompetitions();
 	req.setAttribute("list", list);
 
 	rd = req.getRequestDispatcher("/jsp/layout.jsp");

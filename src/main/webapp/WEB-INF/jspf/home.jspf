@@ -1,0 +1,17 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<nav>
+	<ul>
+		<li><a href="${pageContext.request.contextPath}/list">
+			Lister tous les livres du catalogue 
+		</a></li>
+		<li><a href="${pageContext.request.contextPath}/filter">
+			Filtrer les livres en fonction du prix 
+		</a></li>
+		<li><a href="${pageContext.request.contextPath}/select">
+			Lister la sélection de livres 
+		</a></li>
+		<li><a href="${pageContext.request.contextPath}/select/empty">
+			Vider la sélection de livres
+		</a></li>
+	</ul>
+</nav>

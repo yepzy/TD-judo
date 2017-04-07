@@ -1,4 +1,4 @@
-package org.judo.services;
+package org.judo.controller;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.judo.utils.ArgsPageLabel;
 
-public abstract class Services {
+public abstract class BaseController {
     
     protected RequestDispatcher rd;
 

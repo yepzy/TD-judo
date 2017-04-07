@@ -1,6 +1,7 @@
-package org.judo.services;
+package org.judo.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -8,22 +9,31 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.judo.bean.Grade;
+import org.judo.services.Service;
 import org.judo.utils.ArgsPageLabel;
 
-public class ProfilService extends Services {
+/**
+ * Display the coordonnee page
+ * @author root
+ *
+ */
+public class CoordonneeController extends BaseController{
 
     @Override
     public Map<ArgsPageLabel, Object> execute(HttpServletRequest req, HttpServletResponse resp, HttpSession session)
 	    throws ServletException, IOException {
-	HttpSession sessionLogin = null;
-	System.out.println("Profil");
+	req.getServletContext().log("Coordonnee page called");
+	
+	req.setAttribute("pageTitle", "Coordonnées");
+	req.setAttribute("slug", "coordonnee");
+	
+	List<Grade> list =  Service.getGrades();
 		
-	req.setAttribute("pageTitle", "Profil");
-	req.setAttribute("slug", "profil");
-	
-	
+	req.setAttribute("list", list);
+
 	rd = req.getRequestDispatcher("/jsp/layout.jsp");
-	return arrayReturnGen(rd, req, resp, sessionLogin);
+	return arrayReturnGen(rd, req, resp, session);
     }
 
 }

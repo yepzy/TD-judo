@@ -11,13 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.judo.services.CompetitionService;
-import org.judo.services.CoordonneeService;
-import org.judo.services.HomeService;
-import org.judo.services.LoginService;
-import org.judo.services.LogoutService;
-import org.judo.services.ProfilService;
-import org.judo.services.Services;
+import org.judo.controller.BaseController;
+import org.judo.controller.CompetitionController;
+import org.judo.controller.CoordonneeController;
+import org.judo.controller.HomeController;
+import org.judo.controller.LoginController;
+import org.judo.controller.LogoutController;
+import org.judo.controller.ProfilController;
+import org.judo.controller.ProfilSaveController;
 import org.judo.utils.ArgsPageLabel;
 
 public class FrontController extends HttpServlet {
@@ -27,7 +28,7 @@ public class FrontController extends HttpServlet {
      */
     private static final long serialVersionUID = 1L;
 
-    private Map<String, Class<? extends Services>> router;
+    private Map<String, Class<? extends BaseController>> router;
 
     /*
      * (non-Javadoc)
@@ -37,15 +38,14 @@ public class FrontController extends HttpServlet {
     @Override
     public void init() throws ServletException {
 	super.init();
-
-	System.out.println(" --- INIT CONTROLER --- ");
 	router = new HashMap<>();
-	router.put("home", HomeService.class);
-	router.put("login", LoginService.class);
-	router.put("logout", LogoutService.class);
-	router.put("profil", ProfilService.class);
-	router.put("competition", CompetitionService.class);
-	router.put("coordonnee", CoordonneeService.class);
+	router.put("home", HomeController.class);
+	router.put("login", LoginController.class);
+	router.put("logout", LogoutController.class);
+	router.put("profil", ProfilController.class);
+	router.put("profil/save", ProfilSaveController.class);
+	router.put("competition", CompetitionController.class);
+	router.put("coordonnee", CoordonneeController.class);
     }
 
     /*
@@ -58,8 +58,6 @@ public class FrontController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	RequestDispatcher rd = null;
 
-	System.out.println(" --- FRONT CONTROLER --- ");
-
 	HttpSession session = null;
 	session = req.getSession(false);
 	if (session != null)
@@ -68,7 +66,7 @@ public class FrontController extends HttpServlet {
 	String[] urlValArray = null;
 	String slug = null;
 	Map<ArgsPageLabel, Object> argsPage = null;
-	if (req.getRequestURL().toString().contains("/action")) {
+	if (req.getRequestURL().toString().contains("/action/")) {
 	    urlValArray = req.getRequestURL().toString().split("/action/");
 
 	    if (urlValArray != null && urlValArray.length > 1) {
@@ -91,7 +89,7 @@ public class FrontController extends HttpServlet {
 		}
 	    }
 	} else {
-	    resp.sendRedirect(req.getContextPath() + "/action");
+	    resp.sendRedirect(req.getContextPath() + "/action/");
 	}
 
 	if (rd != null) {

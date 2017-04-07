@@ -1,7 +1,49 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <h2>Profil</h2>
-<div class="list-group">
-	<p class="list-group-item">Bob</p>
-	<p class="list-group-item">administrateur</p>
-	<p class="list-group-item">bob.crazy@judo.lan</p>
-	<p class="list-group-item">0657921325</p>
-</div>
+<form action="${pageContext.request.contextPath}/action/profil/save"
+	method="get">
+	<div class="form-group">
+		<label for="nom">Nom <input type="text" name="nom"
+			class="form-control" id="nom" value="${user.name}" />
+		</label>
+	</div>
+	<div class="form-group">
+		<label for="login"> Login <input type="text" name="login"
+			class="form-control" id="login" value="${user.login}" />
+		</label>
+	</div>
+	<div class="form-group">
+		<label for="password">Mot de passe <input type="password"
+			name="password" class="form-control" id="password" />
+		</label>
+	</div>
+	<div class="form-group">
+		<label for="grade"> Grade <select name="grade"
+			class="form-control" id="grade">
+				<option>-</option>
+				<c:forEach items="${grades}" var="grade">
+					<option value="${grade.code}">${grade.libelle}</option>
+				</c:forEach>
+		</select>
+		</label>
+	</div>
+	<div class="form-group">
+		<label for="email">Email <input type="email" name="email"
+			class="form-control" id="email" value="${user.email}" />
+		</label>
+	</div>
+	<div class="form-group">
+		<label for="phone">Téléphone <input type="tel" name="phone"
+			class="form-control" id="phone" value="${user.phone}" />
+		</label>
+	</div>
+	<div class="form-group">
+		<label for="comment">Commentaire <textarea
+				class="form-control">${user.comment}
+</textarea>
+		</label>
+	</div>
+	<div class="offset-2 col-10">
+		<button class="btn btn-primary">Valid</button>
+	</div>
+</form>

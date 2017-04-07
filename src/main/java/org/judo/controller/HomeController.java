@@ -1,4 +1,4 @@
-package org.judo.services;
+package org.judo.controller;
 
 import java.io.IOException;
 import java.util.Map;
@@ -10,14 +10,21 @@ import javax.servlet.http.HttpSession;
 
 import org.judo.utils.ArgsPageLabel;
 
-public class HomeService extends Services {
+/**
+ * Display the home page
+ * @author root
+ *
+ */
+public class HomeController extends BaseController {
 
     @Override
     public Map<ArgsPageLabel, Object> execute(HttpServletRequest req, HttpServletResponse resp, HttpSession session)
 	    throws ServletException, IOException {
-	System.out.println("Home");
+	req.getServletContext().log("Home page called");
+	
 	req.setAttribute("pageTitle", "Home");
 	req.setAttribute("slug", "home");
+	
 	rd = req.getRequestDispatcher("/jsp/layout.jsp");
 	return arrayReturnGen(rd, req, resp, session);
     }

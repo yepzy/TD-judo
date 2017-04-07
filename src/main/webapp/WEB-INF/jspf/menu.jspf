@@ -1,27 +1,28 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <nav class="alert">
 	<div class="list-group">
 		<div class="list-group-item-action">
-			<a href="/judo/action" style="display: block">Accueil</a>
+			<a href="${pageContext.request.contextPath}/action" style="display: block">Accueil</a>
 		</div>
 		<div class="list-group-item-action">
-			<a href="/judo/action/competition" style="display: block">Competitions</a>
+			<a href="${pageContext.request.contextPath}/action/competition" style="display: block">Competitions</a>
 		</div>
 		<div class="list-group-item-action">
-			<a href="/judo/action/coordonnee" style="display: block">Coordonnées</a>
+			<a href="${pageContext.request.contextPath}/action/coordonnee" style="display: block">Coordonnées</a>
 		</div>
 		<c:if test="${!empty sessionScope.login}">
 			<div class="list-group-item-action">
-				<a href="/judo/action/profil" style="display: block">Profil</a>
+				<a href="${pageContext.request.contextPath}/action/profil" style="display: block">Profil</a>
 			</div>
 		</c:if>
 	</div>
 	<hr />
 	<div>
 		<c:if test="${!empty sessionScope.login}">
-			<a href="/judo/action/logout"><button class="btn btn-primary">Logout</button></a>
+			<a href="${pageContext.request.contextPath}/action/logout"><button class="btn btn-primary">Logout</button></a>
 		</c:if>
 		<c:if test="${empty sessionScope.login}">
-			<form method="get" action="/judo/action/login">
+			<form method="get" action="${pageContext.request.contextPath}/action/login">
 				<input type="text" class="form-control" name="login" id="login"
 					placeholder="login" /><br /> <input type="password"
 					class="form-control" name="password" id="password"

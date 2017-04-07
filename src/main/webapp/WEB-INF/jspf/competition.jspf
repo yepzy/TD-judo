@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <h2>Compétitions</h2>
 <table class="table table-striped">
 	<thead>
@@ -12,7 +14,7 @@
 	<tbody>
 		<c:forEach items="${list}" var="competition">
 			<tr>
-				<td>${competition.date}</td>
+				<td><fmt:formatDate value="${competition.date}" pattern="yyyy-MM-dd" /></td>
 				<td>${competition.nom}</td>
 				<td>${competition.ville}</td>
 				<td>${competition.adresse}</td>

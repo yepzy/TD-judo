@@ -1,25 +1,17 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
-<meta charset="utf-8" />
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-	integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
-	crossorigin="anonymous">
-<link rel="stylesheet" href="/WebContent/css/style.css" />
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
-	integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
-	crossorigin="anonymous"></script>
-<title>${pageTitle} - JUDO</title>
+<head>
+<meta charset="utf-8">
+<title>${pageTitle}-Livre</title>
 </head>
 <body>
-	<header class="col-12 text-center">
+	<%@include file="./menu.jspf"%>
+	<header>
+		<c:if test="${!empty msg }">
+			<div style="color: orange;">${msg}</div>
+		</c:if>
 		<br />
-		<h1>Application JUDO - ${pageTitle}</h1>
+		<h1>${pageTitle}</h1>
 		<br />
 	</header>
-	<div class="col-12 alert alert-info">
-		<c:if test="${!empty bandeau}">
-			${bandeau}
-		</c:if>
-	</div>
